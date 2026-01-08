@@ -6,67 +6,65 @@
     <p>{{ numero }} <sup>2</sup>={{ calcularCuadrado }}</p>
     <p>{{ numero }} <sup>3</sup>={{ calcularCubo }}</p>
     <p>{{ numero }} <sup>3</sup>={{ obtenerCubo() }}</p>
-  
-    <button @:click="incrementar()">+1</button>
-    <button @:click="decrementar()">-1</button>
-    <button v-show="mostrar">Prueba</button>
-  </div>
 
+    <div>
+      <button @:click="incremetar()">+1</button>
+      <button @:click="decrementar()">-1</button>
+      <button v-show="mostrar">Prueba</button>
+    </div>
+  </div>
 </template>
 
 <script>
 export default {
+  //Propiedad reactiva
   data() {
     return {
       numero: this.inicio,
-      titulo: "contador",
+      titulo: "Contador",
       exp: 2,
     };
   },
-
   methods: {
-    obtenerCuadrado() {
-      console.log("Entro a obtenerCuadrado:");
+    obtenerCuadra() {
+      console.log("Entro a obtener cuadrado");
       return this.numero * this.numero;
     },
-
     obtenerCubo() {
-      console.log("Entro a obtenerCuadrado:");
+      console.log("Entro a obtener cuadrado");
       return this.numero * this.numero * this.numero;
     },
-    incrementar() {
+    incremetar() {
       console.log(this.tit);
       this.numero++;
     },
     decrementar() {
-      console.log(this.tit);
       this.numero--;
     },
   },
   computed: {
     calcularCuadrado() {
-      console.log("Entro a propiedad computada:");
+      console.log("Entro a propiedad computada");
       return this.numero * this.numero;
     },
-
     calcularCubo() {
-      console.log("Entro a propiedad computada:");
+      console.log("Entro a propiedad computada");
       return this.numero * this.numero * this.numero;
     },
   },
-  /**String, Number, Boolean, Array, Object, Date, Funcion, BigInt */
   /*props: ["tit","inicio","mostrar"], Declaracion basica de props*/
   props: {
     tit: String,
     inicio: {
       type: Number,
       default: 99,
-      validator(value) {
+      validator(value){
         return value>10;
-      },
+      }
     },
     mostrar: Boolean,
   },
+  /**String, Number, Boolean, Array, Object, Date, Funcion, BigInt */
 };
 </script>
 
